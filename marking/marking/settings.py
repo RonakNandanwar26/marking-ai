@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-agb4ail-lwooc3e4)c%hpovth1+vry4u@o61jj8mggvu_)z%eh
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['15.206.91.219']
+
+IS_PRODUCTION = True
 
 
 # Application definition
@@ -74,16 +76,28 @@ WSGI_APPLICATION = 'marking.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {
+if IS_PRODUCTION:
+    DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'testPDFDB',
+        'NAME': 'marking_ai',
         'USER': 'postgres',
-        'PASSWORD': 'admin',
-        'HOST': 'localhost',
+        'PASSWORD': 'marking_ai',
+        'HOST': 'marking-ai-db.cj0esyhyctuc.ap-southeast-2.rds.amazonaws.com',
         'PORT': '5432'
     }
 }
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'testPDFDB',
+            'USER': 'postgres',
+            'PASSWORD': 'admin',
+            'HOST': 'localhost',
+            'PORT': '5432'
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
