@@ -78,15 +78,15 @@ WSGI_APPLICATION = 'marking.wsgi.application'
 
 if IS_PRODUCTION:
     DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'marking_ai',
-        'USER': 'postgres',
-        'PASSWORD': 'marking_ai',
-        'HOST': 'marking-ai-db.cj0esyhyctuc.ap-southeast-2.rds.amazonaws.com',
-        'PORT': '5432'
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': 'marking',
+            'USER': 'marking',
+            'PASSWORD': 'marking-ai',
+            'HOST': 'marking-ai.cj0esyhyctuc.ap-southeast-2.rds.amazonaws.com',
+            'PORT': '5432'
+        }
     }
-}
 else:
     DATABASES = {
         'default': {
